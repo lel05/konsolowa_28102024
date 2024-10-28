@@ -1,4 +1,6 @@
-﻿namespace konsolowa
+﻿using System.Runtime.ConstrainedExecution;
+
+namespace konsolowa
 {
     internal class Program
     {
@@ -7,10 +9,19 @@
             string path = $"../../../Data.txt";
 
             ShowData(GetData(path));
-            
+
         }
 
-        static List<Song> GetData(string path)
+        /**********************************************
+        nazwa funkcji: GetData
+        opis funkcji: Pobieranie danych z pliku tekstowego
+        parametry: path - ścieżka pliku tekstowego
+        
+        zwracany typ i opis: List<Song> - zwracana jest lista zawierająca dane z odczytanego pliku tekstowego
+        autor: 00000000000
+        ***********************************************/
+
+        public static List<Song> GetData(string path)
         {
             List<Song> list = new List<Song>();
 
@@ -19,11 +30,11 @@
                 while(!sr.EndOfStream)
                 {
                     Song s = new Song();
-                    s.Artist = sr.ReadLine();
-                    s.Album = sr.ReadLine();
-                    s.SongsNumber = int.Parse(sr.ReadLine());
-                    s.Year = int.Parse(sr.ReadLine());
-                    s.DownloadNumber = uint.Parse(sr.ReadLine());
+                    s.Artist = sr.ReadLine() ?? "";
+                    s.Album = sr.ReadLine() ?? "";
+                    s.SongsNumber = int.Parse(sr.ReadLine() ?? "");
+                    s.Year = int.Parse(sr.ReadLine() ?? "");
+                    s.DownloadNumber = uint.Parse(sr.ReadLine() ?? "");
                     sr.ReadLine();
                     list.Add(s);
                 }
@@ -32,7 +43,7 @@
             return list;
         }
 
-        static void ShowData(List<Song> list)
+        public static void ShowData(List<Song> list)
         {
             foreach(Song s in list)
             {
