@@ -2,7 +2,7 @@
 
 namespace konsolowa
 {
-    internal class Program
+    public class Program
     {
         static void Main(string[] args)
         {
@@ -32,9 +32,9 @@ namespace konsolowa
                     Song s = new Song();
                     s.Artist = sr.ReadLine() ?? "";
                     s.Album = sr.ReadLine() ?? "";
-                    s.SongsNumber = int.Parse(sr.ReadLine() ?? "");
-                    s.Year = int.Parse(sr.ReadLine() ?? "");
-                    s.DownloadNumber = uint.Parse(sr.ReadLine() ?? "");
+                    s.SongsNumber = int.Parse(sr.ReadLine() ?? "0");
+                    s.Year = int.Parse(sr.ReadLine() ?? "0");
+                    s.DownloadNumber = uint.Parse(sr.ReadLine() ?? "0");
                     sr.ReadLine();
                     list.Add(s);
                 }
